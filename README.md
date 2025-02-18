@@ -1,6 +1,6 @@
 # Cannabis pangenome analyses 
 
-* Data availability summary in ([Supplemental Table 1] (DOI:10.6084/m9.figshare.25869319.v2))
+* Data availability summary in Supplemental Table 1 (DOI:10.6084/m9.figshare.25869319.v2)
 * NCBI BioProject ID for the cannabis pangenome is PRJNA1140642, with sequencing data under PRJNA904266
 * Reference genomes EH23a and EH23b are available under PRJNA1111955 and PRJNA1111956, respectively
 * All genome assemblies, statistics, gene models, expression data, and repeat annotations can be downloaded at Michael Lab Resources (https://resources.michael.salk.edu/root/home.html)
