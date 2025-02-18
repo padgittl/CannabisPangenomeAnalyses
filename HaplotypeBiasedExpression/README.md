@@ -1,9 +1,9 @@
-
 ### Prep input gene expression file
 <details>
 <summary>Download data</summary>
 wget https://salk-tm-pub.s3.us-west-2.amazonaws.com/cannabis_pangenome/haplotype_biased_expression/quant.tsv <br>
 </details>
+
 ```
 python scripts/createTSVFile.v2.py quant.tsv EH23 0
 ```
@@ -20,9 +20,11 @@ wget https://salk-tm-pub.s3.us-west-2.amazonaws.com/cannabis_pangenome/haplotype
 https://resources.michael.salk.edu/root/home.html --> Genes V1 EH23a/b GFF3 <br>
 https://resources.michael.salk.edu/root/home.html --> Genes V1 EH23a/b mRNA_Table <br>
 </details>
+
 ```
 python scripts/assessHaplotypeBiasedExpression.v3.py EH23_tpm0.0.csv EH23_uniprotFunctionalAnnotations.txt EH23.transcript_summary.tsv EH23.primary_high_confidence.gff3 EH23a_EH23b_ortholog_blast_fractionation.txt EH23a_vs_EH23b.collinearity EH23a_vs_EH23b.mcscanx.filtered.blastp EH23b_vs_EH23a.mcscanx.filtered.blastp EH23a EH23b 0.0
 ```
+
 <details>
 <summary>Output file names</summary>
 average_haplotype_biased_expression.txt <br>
