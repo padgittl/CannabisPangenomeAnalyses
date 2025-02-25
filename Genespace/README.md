@@ -3,12 +3,18 @@
 ### prep orthofinder files
 
 ```
-# ** Important -- genespace-compatible orthofinder run is expecting fasta files to have specific naming (e.g. AH3Ma.fa, BCMa.fa, GRMa.fa, etc)
+# Important -- genespace-compatible orthofinder run is expecting fasta files to have specific naming (e.g. AH3Ma.fa, BCMa.fa, GRMa.fa, etc)
 tar -zcf myproteins.tar.gz *.fa
-aws s3 cp myproteins.tar.gz s3://remote/prefix/orthofinder/dir/
+aws s3 cp myproteins.tar.gz s3://path/to/orthofinder/dir/
 ```
 
-### run orthofinder -- check "orthofinder" directory for associated files
+### run orthofinder 
+
+<details>
+<summary> version info that may be important </summary>
+Using snakemake/snakemake:v7.25.0 for Tibanna jobs. <br>
+2023-10-03 22:49:03 : Started OrthoFinder version 2.5.5 <br>
+</details>
 
 ```
 nohup snakemake -p -j 1 --use-conda --tibanna \
@@ -23,14 +29,8 @@ nohup snakemake -p -j 1 --use-conda --tibanna \
     > orthofinder.log 2>&1 &
 ```
 
-<details>
-<summary> version info that may be important </summary>
-Using snakemake/snakemake:v7.25.0 for Tibanna jobs.
-2023-10-03 22:49:03 : Started OrthoFinder version 2.5.5
-</details>
-
 ```
-aws s3 cp s3://remote/prefix/orthofinder/dir/orthofinder.orthofinder.tar.gz .
+aws s3 cp s3://path/to/orthofinder/dir/orthofinder.orthofinder.tar.gz .
 tar -xvzf orthofinder.orthofinder.tar.gz
 ```
 
@@ -48,6 +48,12 @@ chmod +x genespace_dir_commands.sh
 python scripts/invertChroms.v4.py data/assemblyIDs.txt data/csat_orientations.tsv AH3Ma
 invertTheseChrs = data.frame(genome = c("BCMa","KOMPb","BCMa","GRMa","KOMPa","AH3Mb","BCMa","BCMb","GRMb","KOMPb","BCMa","GRMa","AH3Mb","BCMa","BCMb","KOMPa","KOMPb","AH3Mb","BCMb","GRMb","KOMPa","BCMa","BCMb","GRMb","KOMPa","KOMPb","AH3Mb","BCMa","KOMPb","KOMPa","BCMa","GRMb"), 
 chr = c("BCMa.chr1","KOMPb.chr1","BCMa.chr2","GRMa.chr2","KOMPa.chr2","AH3Mb.chr3","BCMa.chr3","BCMb.chr3","GRMb.chr3","KOMPb.chr3","BCMa.chr4","GRMa.chr4","AH3Mb.chr5","BCMa.chr5","BCMb.chr5","KOMPa.chr5","KOMPb.chr5","AH3Mb.chr6","BCMb.chr6","GRMb.chr6","KOMPa.chr6","BCMa.chr7","BCMb.chr7","GRMb.chr7","KOMPa.chr7","KOMPb.chr7","AH3Mb.chr8","BCMa.chr8","KOMPb.chr8","KOMPa.chr9","BCMa.chrX","GRMb.chrX"))
+```
+
+### run genespace in RStudio (Version 2022.12.0+353 (2022.12.0+353))
+
+```
+scripts/genespace.R
 ```
 
 <details>
