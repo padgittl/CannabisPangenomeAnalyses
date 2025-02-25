@@ -53,6 +53,7 @@ chr = c("BCMa.chr1","KOMPb.chr1","BCMa.chr2","GRMa.chr2","KOMPa.chr2","AH3Mb.chr
 ### run genespace in RStudio (Version 2022.12.0+353 (2022.12.0+353))
 
 ```
+# GENESPACE_0.9.3
 scripts/genespace.R
 ```
 
