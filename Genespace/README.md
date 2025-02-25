@@ -1,9 +1,9 @@
 # Genespace commands
 
 ### prep orthofinder files
-### genespace-compatible orthofinder run is expecting fasta files to have specific naming (e.g. AH3Ma.fa, BCMa.fa, GRMa.fa, etc)
 
 ```
+# ** Important -- genespace-compatible orthofinder run is expecting fasta files to have specific naming (e.g. AH3Ma.fa, BCMa.fa, GRMa.fa, etc)
 tar -zcf myproteins.tar.gz *.fa
 aws s3 cp myproteins.tar.gz s3://remote/prefix/orthofinder/dir/
 ```
