@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "",
+    "required": [
+        "proteins",
+        "outbase"
+    ],
+    "properties": {
+        "proteins":  {
+            "type": "string",
+            "description": "compressed tar archive of fasta files",
+            "pattern": ".*\\.tar.gz"
+        },
+        "outbase": {
+            "type": "string",
+            "description": "sample name for output"
+        },
+        "threads": {
+            "type": "integer",
+            "default": 16,
+            "description": "how many threads to use"
+        },
+        "ortho_opt": {
+            "type": "string",
+            "default": "",
+            "description": "allows setting non-managed orthofinder arguments"
+        }
+    }
+}

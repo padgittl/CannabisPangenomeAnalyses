@@ -1,0 +1,58 @@
+from snakemake.utils import validate
+
+import json
+validate(config, "schema/config.schema.json")
+print(json.dumps(config, indent=4))
+
+
+rule orthofinder:
+    input:
+        config['proteins']
+    output:
+        config["outbase"] + ".orthofinder.tar.gz"
+    params:
+        outbase = config['outbase'] + ".orthofinder",
+        prot_dir = "proteins_dir",
+        opt = config["ortho_opt"]
+    conda:
+        "envs/env.yml"
+    threads:
+        config['threads']
+    group:
+        "orthofinder_" + config['outbase']
+    shell:
+        """
+            mkdir {params.prot_dir}
+            tar -xzf {input} -C {params.prot_dir}
+            orthofinder -f {params.prot_dir} -o {params.outbase} -t {threads} {params.opt}
+            tar -czf {output} {params.outbase}
+        """
+
+
+rule emapper:
+    input:
+        config['proteins']
+    output:
+        config['outbase'] + ".emapper.tar.gz"
+    params:
+        outbase = config['outbase'] + ".emapper",
+        prot_dir = "proteins_dir",
+        data_dir = "emapper_data"
+    conda:
+        "envs/env.yml"
+    threads:
+        config['threads']
+    group:
+        "empaper_" + config['outbase']
+    shell:
+        """
+        mkdir {params.prot_dir}
+        tar -xzf {input} -C {params.prot_dir}
+        mkdir -p {params.data_dir}
+        download_eggnog_data.py -y --data_dir {params.data_dir}
+        mkdir {params.outbase}
+        for f in $(ls {params.prot_dir}) ; do \\
+            emapper.py --dbmem -i {params.prot_dir}/$f -o {params.outbase}/$f.emapper -m diamond --cpu {threads} --data_dir {params.data_dir} \\
+            ; done
+        tar -zcf {output} {params.outbase}
+        """

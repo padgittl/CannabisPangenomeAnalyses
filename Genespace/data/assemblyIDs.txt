@@ -1,0 +1,8 @@
+AH3Ma
+BCMa
+GRMb
+KOMPa
+AH3Mb
+BCMb
+GRMa
+KOMPb
